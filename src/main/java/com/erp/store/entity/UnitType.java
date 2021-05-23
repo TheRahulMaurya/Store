@@ -16,6 +16,7 @@ public class UnitType implements Serializable {
 
     private String name;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_on")
     private Date createdOn;
 
@@ -42,4 +43,11 @@ public class UnitType implements Serializable {
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
+
+    @PrePersist
+    public void onCreate()
+    {
+        createdOn = new Date();
+    }
+
 }

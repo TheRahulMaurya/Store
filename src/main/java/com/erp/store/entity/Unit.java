@@ -20,12 +20,18 @@ public class Unit implements Serializable {
 
     private String description;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
     @JoinColumn(name = "unit_type_id")
     private UnitType unitType;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_on")
     private Date createdOn;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedOn;
 
     private long createdBy;
@@ -92,5 +98,35 @@ public class Unit implements Serializable {
 
     public void setCreatedBy(long createdBy) {
         this.createdBy = createdBy;
+    }
+
+    @PrePersist
+    public void onCreate()
+    {
+        createdOn = updatedOn = new Date();
+    }
+
+    @PreUpdate
+    public void onUpdate()
+    {
+        updatedOn = new Date();
+    }
+
+
+    // Override toString
+
+
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                ", description='" + description + '\'' +
+                ", unitType=" + unitType +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                ", createdBy=" + createdBy +
+                '}';
     }
 }

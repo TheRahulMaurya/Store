@@ -24,8 +24,10 @@ public class UnitConversionMapping implements Serializable {
 
     private double value;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedOn;
 
     public long getId() {
@@ -74,5 +76,17 @@ public class UnitConversionMapping implements Serializable {
 
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+    @PrePersist
+    public void onCreate()
+    {
+        createdOn = updatedOn = new Date();
+    }
+
+    @PreUpdate
+    public void onUpdate()
+    {
+        updatedOn = new Date();
     }
 }
