@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "a4113820-49bd-440c-9493-2368ac3ddfbf",
+		"name": "ErpStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Import Excel File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/msi1/Downloads/Java_MAIN_Assignment/MAIN_Assignment/unit1.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/excel/import",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"excel",
+						"import"
+					]
+				},
+				"description": "Please select a valid excel file (format .xlsx)."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all data",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "filter",
+						"value": "Km",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "page",
+						"value": "0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "size",
+						"value": "10",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/excel/all?filter=distance&page=0&size=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"excel",
+						"all"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "distance"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				},
+				"description": "You can fetch data according to page or filter."
+			},
+			"response": []
+		}
+	]
+}
