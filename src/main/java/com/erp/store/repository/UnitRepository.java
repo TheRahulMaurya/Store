@@ -14,7 +14,9 @@ import java.util.Optional;
 public interface UnitRepository extends JpaRepository<Unit, Long> {
     Optional<Unit> findByName(String name);
 
-    List<Unit> findByUnitType(UnitType unitType);
+    Page<Unit> findByName(String name, Pageable pageable);
+
+    Page<Unit> findByUnitType(UnitType unitType, Pageable pageable);
 
     Page<Unit> findAll(Pageable pageable);
 }

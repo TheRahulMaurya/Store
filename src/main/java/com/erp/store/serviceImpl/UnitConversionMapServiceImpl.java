@@ -26,15 +26,12 @@ public class UnitConversionMapServiceImpl implements UnitConversionMapService {
     UnitRepository unitRepository;
 
     @Autowired
-    UnitTypeRepository unitTypeRepository;
-
-    @Autowired
     UnitConversionMapperRepository ucmRepository;
 
     /**
-     *
-     * @param excelDataMap
-     * @return
+     * Conversion of excel DTO to UnitConversionMapping entity.
+     * @param excelDataMap map with key as row number and value as ExcelDataDto.
+     * @return List of UnitConversionMapping Entity
      */
     @Override
     public List<UnitConversionMapping> excelDtoToUnitConvMapping(Map<Integer, ExcelDataDto> excelDataMap){

@@ -11,14 +11,10 @@ public class ErrorResponse {
     public ErrorResponse() {
     }
 
-    public ErrorResponse(String message) {
-        this.message = message;
-    }
-
-    public ErrorResponse(int status, String message, long timeStamp) {
+    public ErrorResponse(int status, String message) {
         this.status = status;
         this.message = message;
-        this.timeStamp = timeStamp;
+        this.timeStamp = System.currentTimeMillis();
     }
 
     // Getter and Setter

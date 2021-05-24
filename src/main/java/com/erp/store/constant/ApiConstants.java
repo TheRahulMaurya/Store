@@ -26,16 +26,23 @@ public class ApiConstants {
     public static final String UNIT_TYPE = "Type";
 
     /************************************************************************************
-    *                         Exception Messages
+    *                         Messages
     ************************************************************************************/
 
     public static final String INVALID_STATUS_MESSAGE = "Invalid status, The status can be 0 or 1 only";
     public static final String INVALID_FILTER_MESSAGE = "Invalid filter, Filter must be related to unit or its type";
     public static final String INTERNAL_SERVER_ERROR = "Internal Server Error, Please try again after sometime.";
+    public static final String FILE_UPLOAD_SUCCESS_MESSAGE = "Uploaded the file successfully: ";
+    public static final String INVALID_FILE_ERROR_MESSAGE = "Invalid file type, Please upload an excel file!";
 
     /************************************************************************************
      *                         String Literals
      ************************************************************************************/
+    public static final String MESSAGE = "message";
+    public static final String UNITS = "units";
+    public static final String CURRENT_PAGE = "currentPage";
+    public static final String TOTAL_PAGES = "totalPages";
+    public static final String TOTAL_ITEMS = "totalItems";
 
 
 

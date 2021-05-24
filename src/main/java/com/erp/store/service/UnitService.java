@@ -15,9 +15,9 @@ public interface UnitService {
 
     void saveUnits(List<Unit> units);
 
-    JSONArray getAllUnits(Pageable pageable, String filter);
+    Map<String, Object> getAllUnits(Pageable pageable, String filter);
 
-    JSONArray getAllUnits(Pageable pageable);
+    Map<String, Object> getAllUnits(Pageable pageable);
 
     List<Unit> excelDtoToUnit(Map<Integer, ExcelDataDto> excelDataMap);
 

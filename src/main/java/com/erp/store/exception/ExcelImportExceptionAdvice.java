@@ -18,9 +18,9 @@ public class ExcelImportExceptionAdvice {
     public ResponseEntity<ErrorResponse> handleInvalidFilterException(InvalidFilterException ife) {
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
-                ife.getMessage(),
-                System.currentTimeMillis()
+                ife.getMessage()
         );
+        ife.printStackTrace();
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
@@ -29,9 +29,9 @@ public class ExcelImportExceptionAdvice {
     public ResponseEntity<ErrorResponse> handleStatusException(InvalidStatusException ise) {
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.EXPECTATION_FAILED.value(),
-                ise.getMessage(),
-                System.currentTimeMillis()
+                ise.getMessage()
         );
+        ise.printStackTrace();
         return new ResponseEntity<>(errorResponse, HttpStatus.EXPECTATION_FAILED);
     }
 
@@ -40,10 +40,21 @@ public class ExcelImportExceptionAdvice {
     public ResponseEntity<ErrorResponse> handleExceptionImportException(ExcelImportException eie) {
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.EXPECTATION_FAILED.value(),
-                eie.getMessage(),
-                System.currentTimeMillis()
+                eie.getMessage()
         );
+        eie.printStackTrace();
         return new ResponseEntity<>(errorResponse, HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException iae) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                iae.getMessage()
+        );
+        iae.printStackTrace();
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
@@ -51,9 +62,9 @@ public class ExcelImportExceptionAdvice {
     public ResponseEntity<ErrorResponse> handleGeneralException(Exception exc) {
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                ApiConstants.INTERNAL_SERVER_ERROR,
-                System.currentTimeMillis()
+                ApiConstants.INTERNAL_SERVER_ERROR
         );
+        exc.printStackTrace();
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

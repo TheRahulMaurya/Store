@@ -1,5 +1,9 @@
 package com.erp.store.dto;
 
+import com.erp.store.constant.ApiConstants;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Dto class to hold excel data.
  * <p>Considering conversionId and ConversionValue are not greater
@@ -7,18 +11,25 @@ package com.erp.store.dto;
  */
 public class ExcelDataDto {
 
+    @JsonIgnore
     private int rowNumber;
 
+    @JsonProperty(value = ApiConstants.UNIT_NAME)
     private String unitName;
 
-    private boolean status;
+    @JsonProperty(value = ApiConstants.UNIT_STATUS)
+    private int status;
 
+    @JsonProperty(value = ApiConstants.UNIT_DESCRIPTION)
     private String description;
 
+    @JsonProperty(value = ApiConstants.UNIT_TYPE)
     private String type;
 
+    @JsonIgnore
     private Integer conversionUid;
 
+    @JsonIgnore
     private Double conversionValue;
 
     // Getter and Setters
@@ -40,11 +51,11 @@ public class ExcelDataDto {
         this.unitName = unitName;
     }
 
-    public boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

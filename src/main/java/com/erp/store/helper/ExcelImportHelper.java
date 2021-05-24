@@ -29,7 +29,7 @@ public class ExcelImportHelper {
         Unit unit = new Unit();
         UnitType unitType = new UnitType();
         unit.setName(excelData.getUnitName());
-        unit.setStatus(excelData.getStatus());
+        unit.setStatus(Converter.intToBoolean(excelData.getStatus()));
         unit.setDescription(excelData.getDescription());
         unitType.setName(excelData.getType());
         unit.setUnitType(unitType);
@@ -61,7 +61,7 @@ public class ExcelImportHelper {
                             excelDataDto.setUnitName(currentCell.getStringCellValue());
                             break;
                         case 1:
-                            excelDataDto.setStatus(Converter.intToBoolean((int) currentCell.getNumericCellValue()));
+                            excelDataDto.setStatus((int) currentCell.getNumericCellValue());
                             break;
                         case 2:
                             excelDataDto.setDescription(currentCell.getStringCellValue());
