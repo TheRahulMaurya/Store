@@ -34,6 +34,7 @@ public class ApiConstants {
     public static final String INTERNAL_SERVER_ERROR = "Internal Server Error, Please try again after sometime.";
     public static final String FILE_UPLOAD_SUCCESS_MESSAGE = "Uploaded the file successfully: ";
     public static final String INVALID_FILE_ERROR_MESSAGE = "Invalid file type, Please upload an excel file!";
+    public static final String EXCEL_IMPORT_EXCEPTION_MESSAGE = "Failed to store excel data: ";
 
     /************************************************************************************
      *                         String Literals

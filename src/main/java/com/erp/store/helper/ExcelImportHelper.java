@@ -5,6 +5,7 @@ import com.erp.store.dto.ExcelDataDto;
 import com.erp.store.entity.Unit;
 import com.erp.store.entity.UnitConversionMapping;
 import com.erp.store.entity.UnitType;
+import com.erp.store.exception.ExcelImportException;
 import com.erp.store.repository.UnitRepository;
 import com.erp.store.util.Converter;
 import org.apache.poi.ss.usermodel.Cell;
@@ -44,7 +45,7 @@ public class ExcelImportHelper {
             int rowNumber = 0;
             while (rows.hasNext()) {
                 Row currentRow = rows.next();
-                logger.info("currentRow.getRowNum() : "+currentRow.getRowNum());
+                logger.info("Processing Row number : {}", currentRow.getRowNum());
                 // skip header
                 if (rowNumber == 0) {
                     rowNumber++;
@@ -84,7 +85,7 @@ public class ExcelImportHelper {
             }
             return excelDtoMap;
         } catch (IOException e) {
-            throw new RuntimeException("fail to parse Excel file: " + e.getMessage());
+            throw new ExcelImportException(ApiConstants.EXCEL_IMPORT_EXCEPTION_MESSAGE + e.getMessage());
         }
     }
 }

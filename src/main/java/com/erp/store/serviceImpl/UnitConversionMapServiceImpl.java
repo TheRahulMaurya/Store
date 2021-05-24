@@ -20,8 +20,6 @@ import java.util.Optional;
 @Service
 public class UnitConversionMapServiceImpl implements UnitConversionMapService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UnitConversionMapServiceImpl.class);
-
     @Autowired
     UnitRepository unitRepository;
 
@@ -38,7 +36,6 @@ public class UnitConversionMapServiceImpl implements UnitConversionMapService {
         List<UnitConversionMapping> ucmList = new ArrayList<>();
         excelDataMap.values().forEach(excelDataDto -> {
             if(excelDataDto.getConversionUid() != null){
-                logger.info("excelDtoToUnitConvMapping : "+excelDataDto);
                 UnitConversionMapping ucm = new UnitConversionMapping();
                 Unit convertedFrom;
                 Unit convertedTo;
@@ -57,7 +54,6 @@ public class UnitConversionMapServiceImpl implements UnitConversionMapService {
                 }
             }
         });
-        logger.info("ucmList"+ucmList);
         return ucmList;
     }
 

@@ -30,7 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UnitServiceImpl implements UnitService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UnitServiceImpl.class);
 
     @Autowired
     UnitRepository unitRepository;
@@ -57,7 +56,7 @@ public class UnitServiceImpl implements UnitService {
             List<UnitConversionMapping> ucmList = ucmService.excelDtoToUnitConvMapping(excelDataMap);
             ucmService.saveUnitConversionMappings(ucmList);
         } catch (IOException e) {
-            throw new ExcelImportException("fail to store excel data: " + e.getMessage());
+            throw new ExcelImportException(ApiConstants.EXCEL_IMPORT_EXCEPTION_MESSAGE + e.getMessage());
         }
     }
 
@@ -161,7 +160,6 @@ public class UnitServiceImpl implements UnitService {
             Unit unit = ExcelImportHelper.getUnitFromExcelDto(excelDataDto);
             units.add(unit);
         });
-        logger.info(units.toString());
         return units;
     }
 }
